@@ -8,7 +8,8 @@ from kivymd.app import MDApp
 from kivy.lang.builder import Builder
 from kivy.uix.image import AsyncImage
 from kivy.uix.screenmanager import Screen,ScreenManager,NoTransition
-
+from kivymd.uix.imagelist import SmartTileWithLabel
+import webbrowser as wb
 screen_helper = """
 #: import Loader kivy.loader.Loader
 #: import NoTransition kivy.uix.screenmanager.NoTransition
@@ -149,7 +150,7 @@ ScreenManager:
                 BoxLayout:
                     orientation: 'vertical'
 	    			MDToolbar:
-					    title: 'introduction'
+					    title: 'Introduction'
 					    left_action_items: [["arrow-left",lambda x:  root.ch_sc()]]
 					BoxLayout:
                     	orientation: 'vertical'
@@ -158,7 +159,19 @@ ScreenManager:
 								cols: 1
 								height: self.minimum_height
 								size_hint_y: None
-								MDCard:
+								MyTile:
+									on_press: print('')
+									AsyncImage:
+										
+										source:'https://docs.google.com/drawings/d/e/2PACX-1vSyu4XUZdUSfeXvURyD7c2ut0fiUoIF0AgSrKUTr815mNrorv9FyIs81Fc23D-KKBX6PLYQ6AxpKnEG/pub?w=1440&h=1080'
+								MyTile:
+									on_press: print('')
+									AsyncImage:
+										source:'https://docs.google.com/drawings/d/e/2PACX-1vSiUC9rHn8lpmggNfifeacBI1d1O8Ve3C7FzVjR-wLVy09PqBZ6DbBmrl6x6MmyXi2V3cp6qS0G-KBk/pub?w=1440&h=1080'
+										
+										
+								
+									
 												
 <profilescreenthree>:
 	name: 'profile3'
@@ -209,6 +222,7 @@ ScreenManager:
                     	orientation: 'vertical'
 						ScrollView:
 							GridLayout:
+								padding:25
 								cols: 1
 								height: self.minimum_height
 								size_hint_y: None
@@ -216,12 +230,21 @@ ScreenManager:
 									elevation:7
 									pos_hint: {'center_x': .5, 'center_y': .5}				
 									size_hint: None,None
-									size: root.width-50,(root.height/3)+70
+									size: root.width-50,(root.height/3)
+									
 								MDCard:
 									elevation:7
 									pos_hint: {'center_x': .5, 'center_y': .5}				
 									size_hint: None,None
-									size: root.width-50,(root.height/3)+70
+									size: root.width-50,(root.height/3)
+								MDCard:
+									elevation:7
+									pos_hint: {'center_x': .5, 'center_y': .5}				
+									size_hint: None,None
+									size: root.width-50,(root.height/3)
+									AsyncImage:
+										source:'https://docs.google.com/drawings/d/e/2PACX-1vSiUC9rHn8lpmggNfifeacBI1d1O8Ve3C7FzVjR-wLVy09PqBZ6DbBmrl6x6MmyXi2V3cp6qS0G-KBk/pub?w=1440&h=1080'
+								
 <profilescreensix>:
 	name: 'profile6'
 	NavigationLayout:
@@ -257,6 +280,13 @@ ScreenManager:
 								cols: 1
 								height: self.minimum_height
 								size_hint_y: None
+
+
+<MyTile@SmartTileWithLabel>
+	image:'link'
+    size_hint_y: None
+    height: "240dp"
+    box_color:0,0,0,0
 """
 class MenuScreen(Screen):
 	def set_sc(self):
